@@ -4,7 +4,6 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as QuickSettings from 'resource:///org/gnome/shell/ui/quickSettings.js';
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-import { Backlight } from './backlight.js';
 import { OledColorEffects } from './colorEffect.js';
 
 const OledSlider = GObject.registerClass(
@@ -37,23 +36,6 @@ export default class OledControlExtension extends Extension {
 
         this._indicator = new QuickSettings.SystemIndicator();
 
-        const maxBrightness = Backlight.max;
-        const savedBrightness = this._settings.get_int('brightness');
-        // Use the value actually on disk if we can read it, otherwise fall back
-        // to the last saved setting. Never assume - read real hardware state.
-        const currentBrightness = Backlight.read() ?? savedBrightness;
-
-        this._brightnessSlider = new OledSlider({
-            iconName: 'display-brightness-symbolic',
-            accessibleName: 'OLED Brightness',
-            initialValue: currentBrightness / maxBrightness,
-            onChange: (value) => {
-                const raw = Math.round(value * maxBrightness);
-                Backlight.write(raw);
-                this._settings.set_int('brightness', raw);
-            },
-        });
-
         this._contrastSlider = new OledSlider({
             iconName: 'contrast-symbolic',
             accessibleName: 'OLED Contrast',
@@ -79,7 +61,7 @@ export default class OledControlExtension extends Extension {
         });
 
         this._indicator.quickSettingsItems.push(
-            this._brightnessSlider, this._contrastSlider, this._saturationSlider);
+            this._contrastSlider, this._saturationSlider);
 
         Main.panel.statusArea.quickSettings.addExternalIndicator(this._indicator, 2);
     }
@@ -94,7 +76,6 @@ export default class OledControlExtension extends Extension {
             this._indicator.destroy();
             this._indicator = null;
         }
-        this._brightnessSlider = null;
         this._contrastSlider = null;
         this._saturationSlider = null;
         this._settings = null;

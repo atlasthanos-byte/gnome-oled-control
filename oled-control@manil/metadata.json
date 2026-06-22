@@ -1,0 +1,9 @@
+{
+  "uuid": "oled-control@manil",
+  "name": "OLED Display Control",
+  "description": "Control brightness (raw sysfs value), contrast and saturation on the Asus OLED panel.",
+  "shell-version": ["48"],
+  "url": "",
+  "settings-schema": "org.gnome.shell.extensions.oled-control",
+  "gettext-domain": "oled-control"
+}

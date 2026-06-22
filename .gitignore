@@ -1,0 +1,6 @@
+# Compiled GSettings schema - generated locally on install, not source
+oled-control@manil/schemas/gschemas.compiled
+
+# OS junk
+.DS_Store
+Thumbs.db

@@ -1,0 +1,16 @@
+<schemalist>
+  <schema id="org.gnome.shell.extensions.oled-control" path="/org/gnome/shell/extensions/oled-control/">
+    <key name="brightness" type="i">
+      <default>200000</default>
+      <summary>Raw backlight brightness value</summary>
+    </key>
+    <key name="contrast" type="d">
+      <default>1.0</default>
+      <summary>Contrast multiplier (1.0 = normal, range 0.5 - 1.5)</summary>
+    </key>
+    <key name="saturation" type="d">
+      <default>1.0</default>
+      <summary>Saturation multiplier (1.0 = normal, range 0.0 - 2.0)</summary>
+    </key>
+  </schema>
+</schemalist>

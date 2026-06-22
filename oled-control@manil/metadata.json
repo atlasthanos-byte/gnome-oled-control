@@ -3,7 +3,7 @@
   "name": "OLED Display Control",
   "description": "Control brightness (raw sysfs value), contrast and saturation on the Asus OLED panel.",
   "shell-version": ["48"],
-  "url": "",
+  "url": "https://github.com/atlasthanos-byte/gnome-oled-control",
   "settings-schema": "org.gnome.shell.extensions.oled-control",
   "gettext-domain": "oled-control"
 }
